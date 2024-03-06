@@ -37,6 +37,16 @@ class ExpenseCalculator:
     def calculateDifference(self):
         # calculate the difference between total income and total expense
         return self.calculateTotalIncome() - self.calculateTotalExpense()
+    
+    def printExpenses(self):
+        # print the expenses dictionary
+        for expense in self.__expenses.keys():
+            print(expense, ": -$" + str(self.__expenses[expense]))
+    
+    def printIncomes(self):
+        # print the income dictionary
+        for income in self.__income.keys():
+            print(income, ": +$" + str(self.__income[income]))
 
 if (__name__ == "__main__"):
     # create an object of the class
@@ -58,7 +68,15 @@ if (__name__ == "__main__"):
         ec.updateIncome(income, amount)
         income = input("Input an income or just \"N\" to stop: ")
     
+    # print the expenses
+    print("-------------EXPENSES-------------")
+    ec.printExpenses()
+
+    # print the incomes
+    print("-------------INCOMES--------------")
+    ec.printIncomes()
+
     # print the total expense, total income and difference
-    print("Total Expense: ", ec.calculateTotalExpense())
-    print("Total Income: ", ec.calculateTotalIncome())
-    print("Difference: ", ec.calculateDifference())
+    print("Total Expense: -", ec.calculateTotalExpense(), sep = "")
+    print("Total Income: +", ec.calculateTotalIncome(), sep = "")
+    print("Difference: ", ec.calculateDifference(), sep = "")
